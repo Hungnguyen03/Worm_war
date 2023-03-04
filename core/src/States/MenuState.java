@@ -67,7 +67,7 @@ public class MenuState extends State {
 		playBtn.addListener(new ClickListener() {
 			 @Override
 			 public void clicked(InputEvent event, float x, float y) {
-				gsm.set(new GameOverState(gsm));
+				gsm.set(new PlayState(gsm));
 				dispose();
 			 }
 		});

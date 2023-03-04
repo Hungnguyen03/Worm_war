@@ -8,18 +8,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.worm.Wormwar;
 
 public  class GameOverState extends State{
+	
+	public static final int WIDTH_LABEL = 500;
+    public static final int HEIGHT_LABEL = 200;
+	public static final int centerX = Wormwar.WIDTH/2;
+    public static final int centerY = Wormwar.HEIGHT/2;
 	
 	private Label label;
 	private Stage stage;
 	private Texture againBtn;
 	private Texture ExitBtn;
 	private Skin skin;
-	private Table table;
+//	private Table table;
 	
 	public GameOverState(GameStateManager gsm) {
 		super(gsm);
@@ -32,8 +36,8 @@ public  class GameOverState extends State{
 
 	        label = new Label("GAMEOVER", skin, "subtitle");
 	        label.setColor(Color.RED);
-	        label.setSize(Wormwar.WIDTH, Wormwar.HEIGHT);
-	        label.setPosition(,);
+	        label.setSize(Wormwar.WIDTH, Wormwar.HEIGHT + 300);
+//	        label.setPosition(,);
 	        label.setAlignment(Align.center);
 	        
 	    stage.addActor(label);
