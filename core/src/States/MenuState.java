@@ -1,17 +1,12 @@
 package States;
 
-import org.w3c.dom.Text;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button.ButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.worm.Wormwar;
@@ -27,11 +22,9 @@ public class MenuState extends State {
     private TextButton playBtn;
     private TextButton exitBtn;
     private Skin mySkin;
-    private Table table;
     
 	private Texture background;
     private Sprite backgroundSprite;
-    private SpriteBatch spriteBatch;
 	
 	public MenuState (GameStateManager gsm) {
 		super(gsm);
@@ -39,15 +32,13 @@ public class MenuState extends State {
 		
 		background = new Texture("bg.jpg");
         backgroundSprite = new Sprite(background,0,0,Wormwar.WIDTH, Wormwar.HEIGHT);
+        
 		
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 				
 		mySkin = new Skin(Gdx.files.internal("pixthulhu-ui.json"));
-		
-		table = new Table(mySkin);
-		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
+
 		//create buttons
 		playBtn = new TextButton("Play", mySkin, "default");
 		playBtn.setPosition((Wormwar.WIDTH / 2) - (PLAY_BTN_WIDTH / 2),(Wormwar.HEIGHT / 2));
@@ -59,7 +50,6 @@ public class MenuState extends State {
 		stage.addActor(playBtn);
 		stage.addActor(exitBtn);
 		
-		spriteBatch = new SpriteBatch();
 	} 
 
 	@Override
@@ -89,11 +79,10 @@ public class MenuState extends State {
 
 	@Override
 	public void render(SpriteBatch sb) {
-//	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        spriteBatch.begin();
-        backgroundSprite.draw(spriteBatch);
-        spriteBatch.end();
+        sb.begin();
+        backgroundSprite.draw(sb);
+        sb.end();
 
         stage.act();
         stage.draw();
@@ -104,7 +93,6 @@ public class MenuState extends State {
 		// TODO Auto-generated method stub
 		 background.dispose();
 	     stage.dispose();
-	     spriteBatch.dispose();
 	}
 	
 	
